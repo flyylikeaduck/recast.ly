@@ -10,7 +10,7 @@ var App = () => (
         <VideoPlayer video={exampleVideoData[0]}/>
       </div>
       <div className="col-md-5">
-        <VideoList videoList={window.exampleVideoData}/>
+        <VideoList videos={exampleVideoData}/>
       </div>
     </div>
   </div>
