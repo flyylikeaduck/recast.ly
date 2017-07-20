@@ -3,7 +3,7 @@ var searchYouTube = (options, callback) => {
   var settings = {
     'async': true,
     'crossDomain': true,
-    'url': `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&q=${options.query}&maxResults=${options.max}&type=videos&part=snippet`,
+    'url': `https://www.googleapis.com/youtube/v3/search?key=${options.key}&q=${options.query}&maxResults=${options.max}&type=videos&part=snippet`,
     'method': 'GET',
     'headers': {
       'cache-control': 'no-cache',
@@ -14,6 +14,7 @@ var searchYouTube = (options, callback) => {
   $.ajax(settings).done(function (response) {
     console.log('Response!!', response.items);
     callback(response.items); // should pass response to .handleSearch (set videos state)
+    // handleSearch(response.items);
   });
 };
 

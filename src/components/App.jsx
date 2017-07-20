@@ -5,6 +5,9 @@ class App extends React.Component {
       videos: exampleVideoData,
       videoPlaying: exampleVideoData[0]
     };
+
+    this.handleClick = this.handleClick.bind (this);
+    this.handleSearch = this.handleSearch.bind (this);
   }
   
   handleClick(video) {
@@ -16,6 +19,7 @@ class App extends React.Component {
     this.setState({
       videos: videos
     });
+
   }
 
   // handleSearchClick() {
@@ -27,7 +31,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search handleSearch={this.handleSearch.bind(this)}/>
+            <Search handleSearch={this.handleSearch}/>
           </div>
         </nav>
         <div className="row">
@@ -35,7 +39,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.videoPlaying}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.state.videos} handleClick={this.handleClick.bind(this)}/>
+            <VideoList videos={this.state.videos} handleClick={this.handleClick}/>
           </div>
         </div>
       </div>
