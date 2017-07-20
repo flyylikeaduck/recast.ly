@@ -1,5 +1,5 @@
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       videos: exampleVideoData,
@@ -12,13 +12,22 @@ class App extends React.Component {
       videoPlaying: video
     });
   }
+  handleSearch(videos) {
+    this.setState({
+      videos: videos
+    });
+  }
+
+  // handleSearchClick() {
+    
+  // }
   
   render() {  
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search/>
+            <Search handleSearch={this.handleSearch.bind(this)}/>
           </div>
         </nav>
         <div className="row">
