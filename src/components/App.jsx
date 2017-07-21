@@ -8,7 +8,9 @@ class App extends React.Component {
 
     this.handleClick = this.handleClick.bind (this);
     this.handleSearch = this.handleSearch.bind (this);
+    
   }
+  
   
   handleClick(video) {
     this.setState({
@@ -17,21 +19,22 @@ class App extends React.Component {
   }
   handleSearch(videos) {
     this.setState({
-      videos: videos
+      videos: videos,
+      videoPlaying: videos[0]
+      
     });
 
   }
-
-  // handleSearchClick() {
+  componentDidMount() {
+    this.props.searchYouTube({key: YOUTUBE_API_KEY, query: 'batman puppies', max: 5}, this.handleSearch);
+  }
     
-  // }
-  
   render() {  
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search handleSearch={this.handleSearch}/>
+            <Search handleSearch={this.handleSearch} searchYouTube={this.props.searchYouTube}/>
           </div>
         </nav>
         <div className="row">
@@ -45,7 +48,8 @@ class App extends React.Component {
       </div>
     );
   }
-}
+} 
+
 
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope

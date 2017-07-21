@@ -6,19 +6,18 @@ var searchYouTube = (options, callback) => {
     'url': `https://www.googleapis.com/youtube/v3/search?key=${options.key}&q=${options.query}&maxResults=${options.max}&type=videos&part=snippet`,
     'method': 'GET',
     'headers': {
-      'cache-control': 'no-cache',
-      'postman-token': '5194e2c1-990e-0d9d-c104-f1c915cfccc4'
+      'cache-control': 'no-cache'
     }
   };
 
   $.ajax(settings).done(function (response) {
     console.log('Response!!', response.items);
-    callback(response.items); // should pass response to .handleSearch (set videos state)
-    // handleSearch(response.items);
+    callback(response.items);
+   // should pass response to .handleSearch (set videos state)
   });
 };
 
-window.searchYouTube = searchYouTube;
+//window.searchYouTube = searchYouTube;
 
 
 /*$.ajax({
